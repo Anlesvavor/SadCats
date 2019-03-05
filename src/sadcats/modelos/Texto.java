@@ -20,7 +20,7 @@ public class Texto extends Componente {
     private String texto;
     private Color color;
     private double rotacion;
-    private int tamano;
+    private float tamano;
 
     public Texto() {
         setSize(500, 80);
@@ -33,7 +33,9 @@ public class Texto extends Componente {
         this.rotacion = rotacion;
     }
 
-    public Texto(String texto, Color color, double rotacion, int tamano) {
+    public Texto(String texto, Color color, double rotacion, float tamano) {
+        setSize(500, 80);
+
         this.texto = texto;
         this.color = color;
         this.rotacion = rotacion;
@@ -45,11 +47,11 @@ public class Texto extends Componente {
         super.paint(grphcs);
         Graphics2D g = (Graphics2D) grphcs;
         g.setColor(color);
-        //Font currentFont = g.getFont();
-        //Font newFont = currentFont.deriveFont(currentFont.getSize() * 1.4F);
-        //g.setFont(newFont);
+        Font currentFont = g.getFont();
+        Font newFont = currentFont.deriveFont(currentFont.getSize() * tamano);
+        g.setFont(newFont);
         g.rotate(Math.toRadians(rotacion));
-        g.drawString(texto, 10, 10);
+        g.drawString(texto, 0, getHeight()/2);
     }
 
     @Override
@@ -81,11 +83,11 @@ public class Texto extends Componente {
         this.rotacion = rotacion;
     }
 
-    public int getTamano() {
+    public float getTamano() {
         return tamano;
     }
 
-    public void setTamano(int tamano) {
+    public void setTamano(float tamano) {
         this.tamano = tamano;
     }
 

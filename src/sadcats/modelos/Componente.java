@@ -8,6 +8,7 @@ package sadcats.modelos;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.util.ArrayList;
 import javax.swing.JComponent;
 
 /**
@@ -15,6 +16,7 @@ import javax.swing.JComponent;
  * @author anlesvavor
  */
 public class Componente extends JComponent implements MouseListener, MouseMotionListener{
+    
     
     public Componente() {
         addMouseListener(this);

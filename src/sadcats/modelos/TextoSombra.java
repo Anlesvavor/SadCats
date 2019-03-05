@@ -21,7 +21,7 @@ public class TextoSombra extends Texto{
         super(texto, color, rotacion);
     }
 
-    public TextoSombra(String texto, Color color, double rotacion, int tamano) {
+    public TextoSombra(String texto, Color color, double rotacion, float tamano) {
         super(texto, color, rotacion, tamano);
     }
     

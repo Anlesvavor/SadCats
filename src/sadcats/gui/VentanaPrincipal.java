@@ -45,6 +45,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         txtRotacion = new javax.swing.JTextField();
         btnColor = new javax.swing.JButton();
         chkSombra = new javax.swing.JCheckBox();
+        jLabel5 = new javax.swing.JLabel();
+        txtTamano = new javax.swing.JTextField();
         diseno1 = new sadcats.modelos.Diseno();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -59,7 +61,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jLabel3.setText("Gato:");
 
-        cboGato.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3" }));
+        cboGato.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3" }));
         cboGato.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cboGatoItemStateChanged(evt);
@@ -79,15 +81,23 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         chkSombra.setText("Sombra");
 
+        jLabel5.setText("Escala:");
+
+        txtTamano.setText("1.0");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtTamano, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -96,9 +106,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         .addComponent(txtRotacion, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(18, 18, 18))
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addGap(15, 15, 15)))
@@ -128,7 +136,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel4)
+                        .addComponent(jLabel5)
+                        .addComponent(txtTamano, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(txtRotacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
@@ -174,12 +185,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             texto = new TextoSombra(
                     txaMensaje.getText(),
                     color,
-                    (double) Double.valueOf(txtRotacion.getText()));
+                    (double) Double.valueOf(txtRotacion.getText()),
+                    Float.parseFloat(txtTamano.getText()));
         } else {
             texto = new Texto(
                     txaMensaje.getText(),
                     color,
-                    (double) Double.valueOf(txtRotacion.getText()));
+                    (double) Double.valueOf(txtRotacion.getText()),
+                   Float.parseFloat(txtTamano.getText()));
         }
         texto.setLocation(evt.getX(), evt.getY());
         System.out.println(texto.toString());
@@ -198,7 +211,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         if (evt.getSource() == cboGato) {
             String seleccionado = (String) cboGato.getSelectedItem();
             Gato gato = new Gato(Integer.parseInt(seleccionado));
-            
+
             diseno1.add(gato);
             diseno1.repaint();
             System.out.println("fug");
@@ -249,9 +262,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea txaMensaje;
     private javax.swing.JTextField txtRotacion;
+    private javax.swing.JTextField txtTamano;
     // End of variables declaration//GEN-END:variables
 }
